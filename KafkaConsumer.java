@@ -1,5 +1,7 @@
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.functions.ReduceFunction;
+import org.apache.flink.configuration.ConfigConstants;
+import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
@@ -10,7 +12,10 @@ import java.util.Properties;
 
 public class KafkaConsumer {
     public static void main(String[] args) throws Exception {
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        // StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        Configuration conf = new Configuration();
+        conf.setBoolean(ConfigConstants.LOCAL_START_WEBSERVER, true);
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
 
         Properties properties = new Properties();
         properties.setProperty("bootstrap.servers", "192.168.8.238:9092");
@@ -23,7 +28,6 @@ public class KafkaConsumer {
 
         // parse the data, group it, window it, and aggregate the counts
         DataStream<SocketWindowWordCount.WordWithCount> windowCounts = sourceStream
-
                 .flatMap(new FlatMapFunction<String, SocketWindowWordCount.WordWithCount>() {
                     @Override
                     public void flatMap(String value, Collector<SocketWindowWordCount.WordWithCount> out) {
@@ -32,10 +36,8 @@ public class KafkaConsumer {
                         }
                     }
                 })
-
                 .keyBy("word")
                 .timeWindow(Time.seconds(10))
-
                 .reduce(new ReduceFunction<SocketWindowWordCount.WordWithCount>() {
                     @Override
                     public SocketWindowWordCount.WordWithCount reduce(SocketWindowWordCount.WordWithCount a, SocketWindowWordCount.WordWithCount b) {

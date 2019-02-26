@@ -19,6 +19,8 @@
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.functions.ReduceFunction;
 import org.apache.flink.api.java.utils.ParameterTool;
+import org.apache.flink.configuration.ConfigConstants;
+import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.windowing.time.Time;
@@ -57,14 +59,17 @@ public class SocketWindowWordCount {
         }
 
         // get the execution environment
-        final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        // final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        Configuration conf = new Configuration();
+        conf.setBoolean(ConfigConstants.LOCAL_START_WEBSERVER, true);
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
 
         // get input data by connecting to the socket
         DataStream<String> text = env.socketTextStream(hostname, port, "\n");
 
         // parse the data, group it, window it, and aggregate the counts
         DataStream<WordWithCount> windowCounts = text
-
                 .flatMap(new FlatMapFunction<String, WordWithCount>() {
                     @Override
                     public void flatMap(String value, Collector<WordWithCount> out) {
@@ -73,10 +78,8 @@ public class SocketWindowWordCount {
                         }
                     }
                 })
-
                 .keyBy("word")
                 .timeWindow(Time.seconds(10))
-
                 .reduce(new ReduceFunction<WordWithCount>() {
                     @Override
                     public WordWithCount reduce(WordWithCount a, WordWithCount b) {
