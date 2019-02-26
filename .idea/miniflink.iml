@@ -19,15 +19,6 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-jdk14/1.5.6/slf4j-jdk14-1.5.6.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-shaded-guava/18.0-5.0/flink-shaded-guava-18.0-5.0.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -55,7 +46,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-actor_2.12/2.4.20/akka-actor_2.12-2.4.20.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-stream_2.12/2.4.20/akka-stream_2.12-2.4.20.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -91,16 +82,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-stream_2.12/2.4.20/akka-stream_2.12-2.4.20.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.5.6/slf4j-api-1.5.6.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-actor_2.12/2.4.20/akka-actor_2.12-2.4.20.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -137,15 +119,6 @@
       <library>
         <CLASSES>
           <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.8/scala-reflect-2.11.8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-slf4j_2.12/2.4.20/akka-slf4j_2.12-2.4.20.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -209,6 +182,61 @@
       <library>
         <CLASSES>
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-metrics-core/1.7.2/flink-metrics-core-1.7.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.6/commons-io-2.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/objenesis/objenesis/2.6/objenesis-2.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/com/esotericsoftware/minlog/minlog/1.2/minlog-1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-slf4j_2.12/2.4.20/akka-slf4j_2.12-2.4.20.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="org.apache.flink:flink-connector-kafka_2.11:1.7.2" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-jdk14/1.7.25/slf4j-jdk14-1.7.25.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
