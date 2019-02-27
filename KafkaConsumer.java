@@ -1,5 +1,3 @@
-import org.apache.flink.api.common.functions.FlatMapFunction;
-import org.apache.flink.api.common.functions.ReduceFunction;
 import org.apache.flink.configuration.ConfigConstants;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -27,26 +25,20 @@ public class KafkaConsumer {
         DataStream<String> sourceStream = env.addSource(kafkaConsumer);
 
         // parse the data, group it, window it, and aggregate the counts
-        DataStream<SocketWindowWordCount.WordWithCount> windowCounts = sourceStream
-                .flatMap(new FlatMapFunction<String, SocketWindowWordCount.WordWithCount>() {
-                    @Override
-                    public void flatMap(String value, Collector<SocketWindowWordCount.WordWithCount> out) {
+        DataStream<WordWithCount> windowCounts = sourceStream
+                .flatMap((String value, Collector<WordWithCount> out) -> {
                         for (String word : value.split("\\s")) {
-                            out.collect(new SocketWindowWordCount.WordWithCount(word, 1L));
+                            out.collect(new WordWithCount(word, 1L));
                         }
                     }
-                })
+                )
+                .returns(WordWithCount.class)
                 .keyBy("word")
                 .timeWindow(Time.seconds(10))
-                .reduce(new ReduceFunction<SocketWindowWordCount.WordWithCount>() {
-                    @Override
-                    public SocketWindowWordCount.WordWithCount reduce(SocketWindowWordCount.WordWithCount a, SocketWindowWordCount.WordWithCount b) {
-                        return new SocketWindowWordCount.WordWithCount(a.word, a.count + b.count);
-                    }
-                });
+                .reduce((a,b)->new WordWithCount(a.word, a.count + b.count));
 
         // print the results with a single thread, rather than in parallel
-        windowCounts.print().setParallelism(1);
+        windowCounts.print().setParallelism(4);
         env.execute("Kafka Window WordCount");
     }
 
