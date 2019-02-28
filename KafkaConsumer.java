@@ -22,23 +22,18 @@ public class KafkaConsumer {
         FlinkKafkaConsumer kafkaConsumer = new FlinkKafkaConsumer("test",  new SimpleStringSchema(), properties);
         kafkaConsumer.setStartFromEarliest();
 
-        DataStream<String> sourceStream = env.addSource(kafkaConsumer);
-
-        // parse the data, group it, window it, and aggregate the counts
-        DataStream<WordWithCount> windowCounts = sourceStream
-                .flatMap((String value, Collector<WordWithCount> out) -> {
-                        for (String word : value.split("\\s")) {
-                            out.collect(new WordWithCount(word, 1L));
+        ((DataStream<String>)env.addSource(kafkaConsumer).setParallelism(1))
+                .flatMap((String value, Collector<WordWithCount> tmp) -> {
+                            for (String word : value.split("\\s")) {
+                                tmp.collect(new WordWithCount(word, 1L));
+                            }
                         }
-                    }
-                )
-                .returns(WordWithCount.class)
+                ).returns(WordWithCount.class).setParallelism(1)
                 .keyBy("word")
-                .timeWindow(Time.seconds(10))
-                .reduce((a,b)->new WordWithCount(a.word, a.count + b.count));
+                .timeWindow(Time.seconds(1))
+                .reduce((w1,w2)->new WordWithCount(w1.word, w1.count + w2.count)).setParallelism(1)
+                .print().setParallelism(1);
 
-        // print the results with a single thread, rather than in parallel
-        windowCounts.print().setParallelism(4);
         env.execute("Kafka Window WordCount");
     }
 
