@@ -233,10 +233,11 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="org.apache.flink:flink-connector-kafka_2.11:1.7.2" level="project" />
+    <orderEntry type="library" name="org.apache.flink:flink-ml_2.12:1.7.2" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-jdk14/1.7.25/slf4j-jdk14-1.7.25.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-runtime_2.12/1.7.2/flink-runtime-web_2.12-1.7.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -245,7 +246,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-runtime_2.12/1.7.2/flink-runtime-web_2.12-1.7.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-jdk14/1.7.25/slf4j-jdk14-1.7.25.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

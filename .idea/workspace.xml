@@ -24,8 +24,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>WordWithCount</find>
       <find>out</find>
+      <find>WordWithCount</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -37,12 +37,14 @@
         <option value="$PROJECT_DIR$/miniflink.iml" />
         <option value="$PROJECT_DIR$/SocketWindowWordCount.java" />
         <option value="$PROJECT_DIR$/KafkaConsumer.java" />
+        <option value="$PROJECT_DIR$/OperatorsDemo.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1745" />
-    <option name="y" value="212" />
+    <option name="x" value="-1806" />
+    <option name="y" value="105" />
     <option name="width" value="1366" />
     <option name="height" value="728" />
   </component>
@@ -52,8 +54,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -70,6 +70,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -102,9 +104,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.KafkaConsumer">
+  <component name="RunManager" selected="Application.OperatorsDemo">
     <configuration name="KafkaConsumer" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="KafkaConsumer" />
+      <module name="miniflink" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OperatorsDemo" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="OperatorsDemo" />
       <module name="miniflink" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -120,12 +129,14 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.SocketWindowWordCount" />
       <item itemvalue="Application.KafkaConsumer" />
+      <item itemvalue="Application.OperatorsDemo" />
+      <item itemvalue="Application.SocketWindowWordCount" />
     </list>
   </component>
   <component name="StructureViewFactory">
-    <option name="ACTIVE_ACTIONS" value=",SHOW_PROPERTIES,SHOW_INTERFACES" />
+    <option name="AUTOSCROLL_MODE" value="false" />
+    <option name="ACTIVE_ACTIONS" value=",SHOW_PROPERTIES,SHOW_INTERFACES,ALPHA_COMPARATOR" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -146,20 +157,20 @@
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Designer" order="1" />
       <window_info id="Learn" order="2" sideWeight="0.5005192" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.49948078" weight="0.1663113" />
-      <window_info id="Structure" order="4" weight="0.18003026" />
+      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.49948078" weight="0.18336888" />
+      <window_info id="Structure" order="4" weight="0.19083156" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.16320166" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.3856549" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="CheckStyle" order="7" weight="0.32952183" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.2502596" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.24844074" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50075644" side_tool="true" weight="0.7737705" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.29508197" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.29417878" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -242,16 +253,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SocketWindowWordCount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="75" column="45" selection-start-line="75" selection-start-column="45" selection-end-line="75" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-connector-kafka_2.11/1.7.2/flink-connector-kafka_2.11-1.7.2.jar!/org/apache/flink/streaming/connectors/kafka/FlinkKafkaConsumer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -287,6 +288,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="374" selection-start-line="374" selection-end-line="374" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.12/1.7.2/flink-streaming-java_2.12-1.7.2.jar!/org/apache/flink/streaming/api/environment/LocalStreamEnvironment.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="7" column="93" lean-forward="true" selection-start-line="7" selection-start-column="93" selection-end-line="7" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocketWindowWordCount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.7.2/flink-core-1.7.2.jar!/org/apache/flink/util/Collector.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -294,39 +319,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Zulu/zulu-8/src.zip!/java/lang/Integer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.7.2/flink-core-1.7.2.jar!/org/apache/flink/api/common/functions/FlatMapFunction.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+        <state relative-caret-position="133">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KafkaConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="24" column="75" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.12/1.7.2/flink-streaming-java_2.12-1.7.2.jar!/org/apache/flink/streaming/api/datastream/DataStream.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="90" column="142" selection-start-line="90" selection-start-column="142" selection-end-line="90" selection-end-column="142" />
+        <state relative-caret-position="188">
+          <caret line="90" column="137" selection-start-line="90" selection-start-column="137" selection-end-line="90" selection-end-column="137" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OperatorsDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.12/1.7.2/flink-streaming-java_2.12-1.7.2.jar!/org/apache/flink/streaming/api/environment/StreamExecutionEnvironment.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="204" column="81" selection-start-line="204" selection-start-column="81" selection-end-line="204" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-912" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KafkaConsumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="232">
+          <caret line="180" selection-start-line="180" selection-end-line="181" />
         </state>
       </provider>
     </entry>
@@ -339,7 +376,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.3284553" />
               </list>
             </option>
           </splitter-proportions>
@@ -351,7 +388,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.3284553" />
               </list>
             </option>
           </splitter-proportions>
@@ -362,7 +399,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.3284553" />
               </list>
             </option>
           </splitter-proportions>
@@ -374,7 +411,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.3284553" />
               </list>
             </option>
           </splitter-proportions>
@@ -406,7 +443,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>org.apache.flink:flink-connector-kafka_2.11:1.7.2</last-edited>
+          <last-edited>org.apache.flink:flink-ml_2.12:1.7.2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
