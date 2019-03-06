@@ -76,18 +76,31 @@ public class OperatorsDemo {
 //                .keyBy(0)
 //                .print();
 
+//        env.socketTextStream(hostname,9000,"\n")
+//                .map((value) -> {
+//                    Tuple2<String, String> features = new Tuple2();
+//                    Integer pos = 0;
+//                    for (String feature : value.split(",")) {
+//                        features.setField(feature, pos++);
+//                    }
+//                    return features;
+//                }).returns(new TypeHint<Tuple2<String, String>>(){})
+//                .keyBy((value) -> {
+//                    return value.getField(0);
+//                })
+//                .print();
+
         env.socketTextStream(hostname,9000,"\n")
                 .map((value) -> {
-                    Tuple2<String, String> features = new Tuple2();
+                    Tuple2<Integer, Integer> features = new Tuple2();
                     Integer pos = 0;
                     for (String feature : value.split(",")) {
-                        features.setField(feature, pos++);
+                        features.setField(Integer.parseInt(feature), pos++);
                     }
                     return features;
-                }).returns(new TypeHint<Tuple2<String, String>>(){})
-                .keyBy((value) -> {
-                    return value.getField(0);
-                })
+                }).returns(new TypeHint<Tuple2<Integer, Integer>>(){})
+                .keyBy(0)
+                .sum(0)
                 .print();
 
         env.execute("OperatorsDemo");
