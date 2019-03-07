@@ -17,12 +17,19 @@
  */
 
 import org.apache.flink.api.common.typeinfo.TypeHint;
+import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.ConfigConstants;
 import org.apache.flink.configuration.Configuration;
+import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.functions.windowing.AllWindowFunction;
 import org.apache.flink.streaming.api.windowing.time.Time;
+import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OperatorsDemo {
     public static void main(String[] args) throws Exception {
@@ -84,23 +91,67 @@ public class OperatorsDemo {
 //                        features.setField(feature, pos++);
 //                    }
 //                    return features;
-//                }).returns(new TypeHint<Tuple2<String, String>>(){})
+//                }).returns(Types.TUPLE(Types.STRING, Types.STRING))//.returns(new TypeHint<Tuple2<String, String>>(){})
 //                .keyBy((value) -> {
 //                    return value.getField(0);
 //                })
 //                .print();
 
-        env.socketTextStream(hostname,9000,"\n")
-                .map((value) -> {
-                    Tuple2<Integer, Integer> features = new Tuple2();
-                    Integer pos = 0;
-                    for (String feature : value.split(",")) {
-                        features.setField(Integer.parseInt(feature), pos++);
+//        env.socketTextStream(hostname,9000,"\n")
+//                .map((value) -> {
+//                    Tuple2<Integer, Integer> features = new Tuple2();
+//                    Integer pos = 0;
+//                    for (String feature : value.split(",")) {
+//                        features.setField(Integer.parseInt(feature), pos++);
+//                    }
+//                    return features;
+//                }).returns(new TypeHint<Tuple2<Integer, Integer>>(){})
+//                .timeWindowAll(Time.seconds(5))
+//                .min(0)
+//                .print();
+
+
+//        env.socketTextStream(hostname,9000,"\n")
+//                .map((value) -> {
+//                    Tuple2<Integer, Integer> features = new Tuple2();
+//                    Integer pos = 0;
+//                    for (String feature : value.split(",")) {
+//                        features.setField(Integer.parseInt(feature), pos++);
+//                    }
+//                    return features;
+//                }).returns(new TypeHint<Tuple2<Integer, Integer>>(){})
+//                .timeWindowAll(Time.seconds(5))
+//                .apply(new AllWindowFunction<Tuple2<Integer,Integer>, Tuple2<Integer, Integer>, TimeWindow>() {
+//                    @Override
+//                    public void apply (TimeWindow window, Iterable<Tuple2<Integer, Integer>> values, Collector<Tuple2<Integer, Integer>> out) {
+//                        for (Tuple2<Integer, Integer> value : values) {
+//                            out.collect(value);
+//                        }
+//                    }
+//                })
+//                .print();
+
+        env.socketTextStream(hostname,9001,"\n")
+                .split((value) -> {
+                    List<String> out = new ArrayList<>();
+                    if (Integer.parseInt(value) % 2 == 0) {
+                        out.add("even");
                     }
-                    return features;
-                }).returns(new TypeHint<Tuple2<Integer, Integer>>(){})
-                .keyBy(0)
-                .sum(0)
+                    else {
+                        out.add("odd");
+                    }
+                    return out;
+                }).select("even").union(
+                        env.socketTextStream(hostname,9000,"\n")
+                            .split((value) -> {
+                                List<String> out = new ArrayList<>();
+                                if (Integer.parseInt(value) % 2 == 0) {
+                                    out.add("even");
+                                 } else {
+                                    out.add("odd");
+                                }
+                                return out;
+                         }).select("odd"))
                 .print();
 
         env.execute("OperatorsDemo");
