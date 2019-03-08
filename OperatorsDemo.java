@@ -21,15 +21,23 @@ import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.ConfigConstants;
 import org.apache.flink.configuration.Configuration;
+import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
+import org.apache.flink.streaming.api.functions.ProcessFunction.Context;
+import org.apache.flink.streaming.api.functions.TimestampExtractor;
+import org.apache.flink.streaming.api.functions.co.ProcessJoinFunction;
 import org.apache.flink.streaming.api.functions.windowing.AllWindowFunction;
+import org.apache.flink.streaming.api.watermark.Watermark;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 
+import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class OperatorsDemo {
     public static void main(String[] args) throws Exception {
@@ -40,6 +48,7 @@ public class OperatorsDemo {
         Configuration conf = new Configuration();
         conf.setBoolean(ConfigConstants.LOCAL_START_WEBSERVER, true);
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
+
 
 //        env.socketTextStream(hostname,9000,"\n")
 //                .map((value) -> {
@@ -131,27 +140,79 @@ public class OperatorsDemo {
 //                })
 //                .print();
 
-        env.socketTextStream(hostname,9001,"\n")
-                .split((value) -> {
-                    List<String> out = new ArrayList<>();
-                    if (Integer.parseInt(value) % 2 == 0) {
-                        out.add("even");
+//        env.socketTextStream(hostname,9001,"\n")
+//                .split((value) -> {
+//                    List<String> out = new ArrayList<>();
+//                    if (Integer.parseInt(value) % 2 == 0) {
+//                        out.add("even");
+//                    }
+//                    else {
+//                        out.add("odd");
+//                    }
+//                    return out;
+//                }).select("even").union(
+//                        env.socketTextStream(hostname,9000,"\n")
+//                            .split((value) -> {
+//                                List<String> out = new ArrayList<>();
+//                                if (Integer.parseInt(value) % 2 == 0) {
+//                                    out.add("even");
+//                                 } else {
+//                                    out.add("odd");
+//                                }
+//                                return out;
+//                         }).select("odd"))
+//                .print();
+
+        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+        env.socketTextStream(hostname,9000,"\n")
+                .assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<String>() {
+                    @Override
+                    public long extractTimestamp(String t, long l) {
+                        return System.currentTimeMillis();
                     }
-                    else {
-                        out.add("odd");
+                    @Override
+                    public Watermark getCurrentWatermark() {
+                        return new Watermark(System.currentTimeMillis());
                     }
-                    return out;
-                }).select("even").union(
-                        env.socketTextStream(hostname,9000,"\n")
-                            .split((value) -> {
-                                List<String> out = new ArrayList<>();
-                                if (Integer.parseInt(value) % 2 == 0) {
-                                    out.add("even");
-                                 } else {
-                                    out.add("odd");
-                                }
-                                return out;
-                         }).select("odd"))
+                })
+                .map((value) -> {
+                    Tuple2<Integer, Integer> features = new Tuple2();
+                    Integer pos = 0;
+                    for (String feature : value.split(",")) {
+                        features.setField(Integer.parseInt(feature), pos++);
+                    }
+                    return features;
+                }).returns(new TypeHint<Tuple2<Integer, Integer>>(){})
+                .keyBy(0)
+                .intervalJoin(
+                        env.socketTextStream(hostname,9001,"\n")
+                                .assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<String>() {
+                                    @Override
+                                    public long extractTimestamp(String t, long l) {
+                                        return System.currentTimeMillis();
+                                    }
+                                    @Override
+                                    public Watermark getCurrentWatermark() {
+                                        return new Watermark(System.currentTimeMillis());
+                                    }
+                                })
+                                .map((value) -> {
+                                    Tuple2<Integer, Integer> features = new Tuple2();
+                                    Integer pos = 0;
+                                    for (String feature : value.split(",")) {
+                                        features.setField(Integer.parseInt(feature), pos++);
+                                    }
+                                    return features;
+                                }).returns(new TypeHint<Tuple2<Integer, Integer>>(){})
+                                .keyBy(0)
+                )
+                .between(Time.seconds(-5), Time.seconds(5))
+                .process(new ProcessJoinFunction< Tuple2<Integer, Integer>, Tuple2<Integer, Integer>, Tuple2<Integer, Integer> >() {
+                    @Override
+                    public void processElement(Tuple2<Integer, Integer> leftValue, Tuple2<Integer, Integer> rightValue, Context ctx, Collector<Tuple2<Integer, Integer>> out) {
+                        out.collect(rightValue);
+                    }
+                })
                 .print();
 
         env.execute("OperatorsDemo");
