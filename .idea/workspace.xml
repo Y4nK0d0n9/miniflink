@@ -16,7 +16,7 @@
     <option name="HIDE_WARNINGS" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -39,6 +39,13 @@
       <find>ProcessFunction</find>
       <find>AssignerWithPeriodicWatermarks</find>
       <find>TimeCharacteristic</find>
+      <find>getKey</find>
+      <find>return</find>
+      <find>//</find>
+      <find>collect</find>
+      <find>CoGroupFunction</find>
+      <find>Iterable</find>
+      <find>apply</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -57,10 +64,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1772" />
-    <option name="y" value="189" />
-    <option name="width" value="1366" />
-    <option name="height" value="728" />
+    <option name="x" value="-1928" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -69,7 +76,6 @@
     </navigator>
     <panes>
       <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -86,6 +92,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -174,11 +181,11 @@
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Designer" order="1" />
       <window_info id="Learn" order="2" sideWeight="0.5005192" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.49948078" weight="0.17004265" />
+      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.49948078" weight="0.16151386" />
       <window_info id="Structure" order="4" weight="0.22974414" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.22245322" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.4106029" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -187,7 +194,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.24844074" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010661" side_tool="true" weight="0.84823287" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.29417878" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.42099792" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -198,11 +205,11 @@
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Designer" order="1" />
       <window_info id="Learn" order="2" sideWeight="0.5005192" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.49948078" visible="true" weight="0.17004265" />
+      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.49948078" weight="0.16151386" />
       <window_info id="Structure" order="4" weight="0.22974414" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.26403326" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.4106029" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -211,7 +218,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.24844074" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010661" side_tool="true" weight="0.84823287" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.29417878" />
+      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.42099792" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -220,44 +227,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/libraries/org_apache_flink_flink_connector_kafka_2_11_1_7_2.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.7.2/flink-core-1.7.2.jar!/org/apache/flink/configuration/ConfigConstants.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23104">
-          <caret line="1217" column="50" selection-start-line="1217" selection-start-column="41" selection-end-line="1217" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-connector-kafka_2.11/1.7.2/flink-connector-kafka_2.11-1.7.2.jar!/org/apache/flink/streaming/connectors/kafka/FlinkKafkaConsumer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#3881#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Zulu/zulu-8/src.zip!/java/util/Properties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="164" column="31" selection-start-line="164" selection-start-column="31" selection-end-line="164" selection-end-column="31" />
-          <folding>
-            <element signature="e#6708#6709#0" expanded="true" />
-            <element signature="e#6746#6747#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="374" selection-start-line="374" selection-end-line="374" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Zulu/zulu-8/src.zip!/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -367,13 +336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.7.2/flink-core-1.7.2.jar!/org/apache/flink/api/java/functions/KeySelector.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -495,13 +457,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IntervalJoinFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/IntervalJoinFunction.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.12/1.7.2/flink-streaming-java_2.12-1.7.2.jar!/org/apache/flink/streaming/api/functions/AssignerWithPunctuatedWatermarks.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -544,24 +500,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.12/1.7.2/flink-streaming-java_2.12-1.7.2.jar!/org/apache/flink/streaming/api/datastream/DataStream.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="124" column="83" selection-start-line="124" selection-start-column="83" selection-end-line="124" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.7.2/flink-core-1.7.2.jar!/org/apache/flink/api/common/functions/Function.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.12/1.7.2/flink-streaming-java_2.12-1.7.2.jar!/org/apache/flink/streaming/api/functions/TimestampAssigner.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="6" column="89" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -572,16 +514,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OperatorsDemo.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.12/1.7.2/flink-streaming-java_2.12-1.7.2.jar!/org/apache/flink/streaming/api/datastream/DataStream.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="50" column="106" selection-start-line="50" selection-start-column="106" selection-end-line="50" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.12/1.7.2/flink-streaming-java_2.12-1.7.2.jar!/org/apache/flink/streaming/api/functions/TimestampAssigner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="6" column="89" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.7.2/flink-core-1.7.2.jar!/org/apache/flink/api/java/tuple/Tuple3.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.7.2/flink-core-1.7.2.jar!/org/apache/flink/api/java/functions/KeySelector.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.12/1.7.2/flink-streaming-java_2.12-1.7.2.jar!/org/apache/flink/streaming/api/datastream/JoinedStreams.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="58" column="127" selection-start-line="58" selection-start-column="127" selection-end-line="58" selection-end-column="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.7.2/flink-core-1.7.2.jar!/org/apache/flink/api/common/functions/JoinFunction.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
-          <caret line="23" column="56" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="56" />
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OperatorsDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="292" column="32" selection-start-line="292" selection-start-column="27" selection-end-line="292" selection-end-column="32" />
           <folding>
-            <element signature="e#7788#7789#0" expanded="true" />
-            <element signature="e#7869#7870#0" expanded="true" />
-            <element signature="e#7960#7961#0" expanded="true" />
-            <element signature="e#8056#8057#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="class#Feature#0;class#OperatorsDemo#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.12/1.7.2/flink-streaming-java_2.12-1.7.2.jar!/org/apache/flink/streaming/api/datastream/CoGroupedStreams.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="94" selection-start-line="13" selection-start-column="94" selection-end-line="13" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.7.2/flink-core-1.7.2.jar!/org/apache/flink/api/common/functions/CoGroupFunction.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="16" />
         </state>
       </provider>
     </entry>
