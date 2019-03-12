@@ -26,10 +26,12 @@ import org.apache.flink.configuration.ConfigConstants;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
+import org.apache.flink.streaming.api.datastream.IterativeStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
 import org.apache.flink.streaming.api.functions.ProcessFunction.Context;
 import org.apache.flink.streaming.api.functions.TimestampExtractor;
+import org.apache.flink.streaming.api.functions.co.CoMapFunction;
 import org.apache.flink.streaming.api.functions.co.ProcessJoinFunction;
 import org.apache.flink.streaming.api.functions.windowing.AllWindowFunction;
 import org.apache.flink.streaming.api.watermark.Watermark;
@@ -74,7 +76,7 @@ public class OperatorsDemo {
     public static void main(String[] args) throws Exception {
 
         // the host and the port to connect to
-        final String hostname = "192.168.8.238";
+        final String hostname = "192.168.7.249";
 
         Configuration conf = new Configuration();
         conf.setBoolean(ConfigConstants.LOCAL_START_WEBSERVER, true);
@@ -84,7 +86,7 @@ public class OperatorsDemo {
         //                .map((value) -> {
         //                    return Math.pow(Integer.parseInt(value), 2);
         //                })
-        //                .print();
+        //                .print();o
         //
         //        env.socketTextStream(hostname,9001,"\n")
         //                .flatMap((String value, Collector<Integer> tmp) -> {
@@ -356,7 +358,26 @@ public class OperatorsDemo {
         //                })
         //                .print();
 
+        //        env.socketTextStream(hostname,9000,"\n")
+        //                .map(value -> Integer.parseInt(value))
+        //                .connect(env.socketTextStream(hostname,9001,"\n"))
+        //                .map(new CoMapFunction<Integer, String, String>() {
+        //                        public String map1(Integer in1) {
+        //                            return String.valueOf(in1+1);
+        //                        }
+        //                        public String map2(String in2) {
+        //                            return in2;
+        //                        }
+        //                })
+        //                .print();
+
+        DataStream<Integer> inputStream = env.socketTextStream(hostname,9000,"\n").map(value -> Integer.parseInt(value));
+        IterativeStream<Integer> iteration = inputStream.iterate();
+        DataStream<Integer> iteratedStream = iteration.map(value -> value + 1);
+        DataStream<Integer> feedbackStream = iteratedStream.filter(value -> {return value % 2 == 0;});
+        iteration.closeWith(feedbackStream);
+        iteration.print();
+
         env.execute("OperatorsDemo");
     }
 }
-
