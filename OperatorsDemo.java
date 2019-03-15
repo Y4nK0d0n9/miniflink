@@ -76,32 +76,33 @@ public class OperatorsDemo {
     public static void main(String[] args) throws Exception {
 
         // the host and the port to connect to
-        final String hostname = "192.168.7.249";
+        final String hostname = "192.168.7.196";
 
         Configuration conf = new Configuration();
         conf.setBoolean(ConfigConstants.LOCAL_START_WEBSERVER, true);
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
+        env.enableCheckpointing(1000);
 
         //        env.socketTextStream(hostname,9000,"\n")
         //                .map((value) -> {
         //                    return Math.pow(Integer.parseInt(value), 2);
         //                })
-        //                .print();o
-        //
-        //        env.socketTextStream(hostname,9001,"\n")
+        //                .print();
+
+        //        env.socketTextStream(hostname,9000,"\n")
         //                .flatMap((String value, Collector<Integer> tmp) -> {
         //                    for (String intStr : value.split("\\s")) {
         //                        tmp.collect(Integer.parseInt(intStr) + 1);
         //                    }
         //                }).returns(Integer.class)
         //                .print();
-        //
+
         //        env.socketTextStream(hostname,9000,"\n")
         //                .filter((value) -> {
         //                    return Integer.parseInt(value) < 10;
         //                }
         //                .print();
-        //
+
         //        env.socketTextStream(hostname,9000,"\n")
         //                .map((value) -> {
         //                    Feature col = new Feature();
@@ -111,7 +112,7 @@ public class OperatorsDemo {
         //                })
         //                .keyBy("featureName")
         //                .print();
-        //
+
         //        env.socketTextStream(hostname,9000,"\n")
         //                .map((value) -> {
         //                    Tuple2<String, String> features = new Tuple2();
@@ -123,7 +124,7 @@ public class OperatorsDemo {
         //                }).returns(new TypeHint<Tuple2<String, String>>(){})
         //                .keyBy(0)
         //                .print();
-        //
+
         //        env.socketTextStream(hostname,9000,"\n")
         //                .map((value) -> {
         //                    Tuple2<String, String> features = new Tuple2();
@@ -137,7 +138,7 @@ public class OperatorsDemo {
         //                    return value.getField(0);
         //                })
         //                .print();
-        //
+
         //        env.socketTextStream(hostname,9000,"\n")
         //                .map((value) -> {
         //                    Tuple2<Integer, Integer> features = new Tuple2();
@@ -150,8 +151,7 @@ public class OperatorsDemo {
         //                .timeWindowAll(Time.seconds(5))
         //                .min(0)
         //                .print();
-        //
-        //
+
         //        env.socketTextStream(hostname,9000,"\n")
         //                .map((value) -> {
         //                    Tuple2<Integer, Integer> features = new Tuple2();
@@ -171,8 +171,8 @@ public class OperatorsDemo {
         //                    }
         //                })
         //                .print();
-        //
-        //        env.socketTextStream(hostname,9001,"\n")
+
+        //        env.socketTextStream(hostname,9000,"\n")
         //                .split((value) -> {
         //                    List<String> out = new ArrayList<>();
         //                    if (Integer.parseInt(value) % 2 == 0) {
@@ -183,7 +183,7 @@ public class OperatorsDemo {
         //                    }
         //                    return out;
         //                }).select("even").union(
-        //                        env.socketTextStream(hostname,9000,"\n")
+        //                        env.socketTextStream(hostname,9001,"\n")
         //                            .split((value) -> {
         //                                List<String> out = new ArrayList<>();
         //                                if (Integer.parseInt(value) % 2 == 0) {
@@ -194,7 +194,7 @@ public class OperatorsDemo {
         //                                return out;
         //                         }).select("odd"))
         //                .print();
-        //
+
         //        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         //        env.socketTextStream(hostname,9000,"\n")
         //                .assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<String>() {
@@ -358,25 +358,25 @@ public class OperatorsDemo {
         //                })
         //                .print();
 
-        //        env.socketTextStream(hostname,9000,"\n")
-        //                .map(value -> Integer.parseInt(value))
-        //                .connect(env.socketTextStream(hostname,9001,"\n"))
-        //                .map(new CoMapFunction<Integer, String, String>() {
-        //                        public String map1(Integer in1) {
-        //                            return String.valueOf(in1+1);
-        //                        }
-        //                        public String map2(String in2) {
-        //                            return in2;
-        //                        }
-        //                })
-        //                .print();
+        env.socketTextStream(hostname,9000,"\n")
+                .map(value -> Integer.parseInt(value))
+                .connect(env.socketTextStream(hostname,9001,"\n"))
+                .map(new CoMapFunction<Integer, String, String>() {
+                        public String map1(Integer in1) {
+                            return String.valueOf(in1+1);
+                        }
+                        public String map2(String in2) {
+                            return in2;
+                        }
+                })
+                .print();
 
-        DataStream<Integer> inputStream = env.socketTextStream(hostname,9000,"\n").map(value -> Integer.parseInt(value));
-        IterativeStream<Integer> iteration = inputStream.iterate();
-        DataStream<Integer> iteratedStream = iteration.map(value -> value + 1);
-        DataStream<Integer> feedbackStream = iteratedStream.filter(value -> {return value % 2 == 0;});
-        iteration.closeWith(feedbackStream);
-        iteration.print();
+        //        DataStream<Integer> inputStream = env.socketTextStream(hostname,9000,"\n").map(value -> Integer.parseInt(value));
+        //        IterativeStream<Integer> iteration = inputStream.iterate();
+        //        DataStream<Integer> iteratedStream = iteration.map(value -> value + 1);
+        //        DataStream<Integer> feedbackStream = iteratedStream.filter(value -> {return value % 2 == 0;});
+        //        iteration.closeWith(feedbackStream);
+        //        iteration.print();
 
         env.execute("OperatorsDemo");
     }
