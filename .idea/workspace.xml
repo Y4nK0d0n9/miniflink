@@ -16,20 +16,7 @@
     <option name="HIDE_WARNINGS" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/OperatorsDemo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="373" selection-start-line="373" selection-end-line="378" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -59,6 +46,7 @@
       <find>CoGroupFunction</find>
       <find>Iterable</find>
       <find>apply</find>
+      <find>process</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -104,17 +92,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="miniflink" type="b2602c69:ProjectViewProjectNode" />
-              <item name="miniflink" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -200,25 +178,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Designer" order="1" />
       <window_info id="Learn" order="2" sideWeight="0.5005192" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.49948078" visible="true" weight="0.16044776" />
+      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.49948078" weight="0.16044776" />
       <window_info id="Structure" order="4" weight="0.22974414" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.2068607" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840087" weight="0.27546778" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="CheckStyle" order="7" weight="0.32952183" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3904465" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010661" side_tool="true" weight="0.84823287" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.42099792" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" visible="true" weight="0.3898129" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.42099792" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50159913" side_tool="true" weight="0.23596674" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -251,23 +228,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-java/1.7.2/flink-java-1.7.2.jar!/org/apache/flink/api/java/operators/AggregateOperator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-java/1.7.2/flink-java-1.7.2.jar!/org/apache/flink/api/java/operators/CoGroupOperator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#9969#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-java/1.7.2/flink-java-1.7.2.jar!/org/apache/flink/api/java/operators/FilterOperator.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -402,13 +362,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="497">
           <caret line="58" column="148" selection-start-line="58" selection-start-column="148" selection-end-line="58" selection-end-column="148" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.12/1.7.2/flink-streaming-java_2.12-1.7.2.jar!/org/apache/flink/streaming/api/functions/ProcessFunction.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -594,12 +547,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Zulu/zulu-8/src.zip!/java/io/Serializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="168" column="17" selection-start-line="168" selection-start-column="17" selection-end-line="168" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.7.2/flink-core-1.7.2.jar!/org/apache/flink/util/OutputTag.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.12/1.7.2/flink-streaming-java_2.12-1.7.2.jar!/org/apache/flink/streaming/api/functions/ProcessFunction.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/OperatorsDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="373" selection-start-line="373" selection-end-line="378" selection-end-column="34" />
+        <state relative-caret-position="608">
+          <caret line="388" selection-start-line="388" selection-end-line="388" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#20605#20613#0" expanded="true" />
+            <element signature="e#20937#21340#0" expanded="true" />
+            <element signature="e#21339#21340#0" expanded="true" />
           </folding>
         </state>
       </provider>

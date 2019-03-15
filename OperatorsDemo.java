@@ -27,8 +27,10 @@ import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.IterativeStream;
+import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
+import org.apache.flink.streaming.api.functions.ProcessFunction;
 import org.apache.flink.streaming.api.functions.ProcessFunction.Context;
 import org.apache.flink.streaming.api.functions.TimestampExtractor;
 import org.apache.flink.streaming.api.functions.co.CoMapFunction;
@@ -39,6 +41,7 @@ import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindo
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
+import org.apache.flink.util.OutputTag;
 
 import java.security.Timestamp;
 import java.util.ArrayList;
@@ -81,7 +84,7 @@ public class OperatorsDemo {
         Configuration conf = new Configuration();
         conf.setBoolean(ConfigConstants.LOCAL_START_WEBSERVER, true);
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
-        env.enableCheckpointing(1000);
+        // env.enableCheckpointing(1000);
 
         //        env.socketTextStream(hostname,9000,"\n")
         //                .map((value) -> {
@@ -358,18 +361,18 @@ public class OperatorsDemo {
         //                })
         //                .print();
 
-        env.socketTextStream(hostname,9000,"\n")
-                .map(value -> Integer.parseInt(value))
-                .connect(env.socketTextStream(hostname,9001,"\n"))
-                .map(new CoMapFunction<Integer, String, String>() {
-                        public String map1(Integer in1) {
-                            return String.valueOf(in1+1);
-                        }
-                        public String map2(String in2) {
-                            return in2;
-                        }
-                })
-                .print();
+        //        env.socketTextStream(hostname,9000,"\n")
+        //                .map(value -> Integer.parseInt(value))
+        //                .connect(env.socketTextStream(hostname,9001,"\n"))
+        //                .map(new CoMapFunction<Integer, String, String>() {
+        //                        public String map1(Integer in1) {
+        //                            return String.valueOf(in1+1);
+        //                        }
+        //                        public String map2(String in2) {
+        //                            return in2;
+        //                        }
+        //                })
+        //                .print();
 
         //        DataStream<Integer> inputStream = env.socketTextStream(hostname,9000,"\n").map(value -> Integer.parseInt(value));
         //        IterativeStream<Integer> iteration = inputStream.iterate();
@@ -377,6 +380,19 @@ public class OperatorsDemo {
         //        DataStream<Integer> feedbackStream = iteratedStream.filter(value -> {return value % 2 == 0;});
         //        iteration.closeWith(feedbackStream);
         //        iteration.print();
+
+        OutputTag<String> outputTag = new OutputTag<String>("side-output"){};
+        SingleOutputStreamOperator<String> mainDataStream = env.socketTextStream(hostname,9000,"\n")
+                .process(new ProcessFunction<String, String>() {
+                    @Override
+                    public void processElement( String value,  Context ctx, Collector<String> out) throws Exception {
+                        out.collect(value);
+
+                        ctx.output(outputTag, value);
+                    }
+                });
+        mainDataStream.print();
+        mainDataStream.getSideOutput(outputTag).print();
 
         env.execute("OperatorsDemo");
     }
