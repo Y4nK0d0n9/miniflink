@@ -77,7 +77,7 @@ public class SocketWindowWordCount {
                             out.collect(new WordWithCount(word, 1L));
                         }
                     }
-                })
+                }).setParallelism(2)
                 .keyBy("word")
                 .timeWindow(Time.seconds(10))
                 .reduce(new ReduceFunction<WordWithCount>() {
@@ -88,7 +88,7 @@ public class SocketWindowWordCount {
                 });
 
         // print the results with a single thread, rather than in parallel
-        windowCounts.print().setParallelism(1);
+        windowCounts.print().setParallelism(2);
 
         env.execute("Socket Window WordCount");
     }

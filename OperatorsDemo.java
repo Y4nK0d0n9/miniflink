@@ -79,7 +79,7 @@ public class OperatorsDemo {
     public static void main(String[] args) throws Exception {
 
         // the host and the port to connect to
-        final String hostname = "192.168.7.196";
+        final String hostname = "192.168.7.234";
 
         Configuration conf = new Configuration();
         conf.setBoolean(ConfigConstants.LOCAL_START_WEBSERVER, true);
@@ -381,18 +381,29 @@ public class OperatorsDemo {
         //        iteration.closeWith(feedbackStream);
         //        iteration.print();
 
-        OutputTag<String> outputTag = new OutputTag<String>("side-output"){};
-        SingleOutputStreamOperator<String> mainDataStream = env.socketTextStream(hostname,9000,"\n")
-                .process(new ProcessFunction<String, String>() {
-                    @Override
-                    public void processElement( String value,  Context ctx, Collector<String> out) throws Exception {
-                        out.collect(value);
+        //        OutputTag<String> outputTag = new OutputTag<String>("side-output"){};
+        //        SingleOutputStreamOperator<String> mainDataStream = env.socketTextStream(hostname,9000,"\n")
+        //                .process(new ProcessFunction<String, String>() {
+        //                    @Override
+        //                    public void processElement( String value,  Context ctx, Collector<String> out) throws Exception {
+        //                        out.collect(value);
+        //
+        //                        ctx.output(outputTag, value);
+        //                    }
+        //                });
+        //        mainDataStream.print();
+        //        mainDataStream.getSideOutput(outputTag).print();
 
-                        ctx.output(outputTag, value);
-                    }
-                });
-        mainDataStream.print();
-        mainDataStream.getSideOutput(outputTag).print();
+        env.socketTextStream(hostname,9000,"\n")
+                .map((value) -> {
+                    return Integer.parseInt(value);
+                }).setParallelism(2)
+                .timeWindowAll(Time.seconds(5))
+                .reduce((a, b) -> {
+                    return a+b;
+                        }
+                ).setParallelism(1) // The parallelism of non parallel operator must be 1.
+                .print().setParallelism(2);
 
         env.execute("OperatorsDemo");
     }
